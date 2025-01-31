@@ -2,3 +2,11 @@ body {
   margin: 0;
 }
 
+.hidden {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.notes-panel, .circleDates, .switcherContainer {
+  transition: opacity 0.5s;
+}
