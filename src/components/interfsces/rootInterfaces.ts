@@ -4,3 +4,8 @@ export interface Point {
   active: boolean;
 	name: string
 }
+
+export interface SliderNote {
+	year: number;
+	text: string
+}
