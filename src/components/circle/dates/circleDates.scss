@@ -1,0 +1,56 @@
+@media (min-width: 768px) {
+	.circleDates {
+		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		display: flex;
+		justify-content: space-between;
+		width: 60%;
+	}
+	
+	.firstDate, .secondDate {
+		flex: 1;
+		font-size: 14vh;
+		font-weight: 700;
+	}
+	
+	.firstDate {
+		color: #3877EE;
+	}
+	
+	.secondDate {
+		color: #EF5DA8;
+	}	
+}
+
+@media (max-width: 768px) {
+	.circleDates {
+		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		position: absolute;
+		top: 25%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+	.firstDate, .secondDate {
+		flex: 1;
+		font-size: 20vw;
+		font-weight: 500;
+	}
+	
+	.firstDate {
+		color: #3877EE;
+	}
+	
+	.secondDate {
+		color: #EF5DA8;
+	}
+}

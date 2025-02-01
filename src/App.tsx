@@ -1,41 +1,24 @@
-// @ts-nocheck
-import { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperCore } from 'swiper/types';
-import 'swiper/css';
-import './components/mobileCSS.scss'
+import { useState } from 'react';
 import './App.scss'
 import { Point } from './components/interfaces/rootInterfaces';
-import { cinemaNotes, economyNotes, literatureNotes, medicineNotes, scienceNotes, sportNotes } from './components/notesPanel/sliderNotes';
+// @ts-ignore
+import 'swiper/css'
 import NotesPanel from './components/notesPanel/sliderPanel';
 import Header from './components/header/headerComponent';
 import CircleContainer from './components/circle/circleContainer';
+import CircleDates from './components/circle/dates/circleDates';
+import SwitcherContainer from './components/circle/switcher/SwitcherContainer';
+import { pointsBlock, notes } from './components/circle/circleData';
 
 const App: React.FC = () => {
-  const [points, setPoints] = useState<Point[]>([
-    { id: 1, angle: 0, active: false, name: 'Спорт'},
-    { id: 2, angle: 60, active: false, name: 'Экономика' },
-    { id: 3, angle: 120, active: false, name: 'Литература' },
-    { id: 4, angle: 180, active: false, name: 'Медицина' },
-    { id: 5, angle: 240, active: false, name: 'Кино' },
-    { id: 6, angle: 300, active: true, name: 'Наука' },
-  ]);
-
-	const notes = {
-		'Спорт': sportNotes,
-		'Кино': cinemaNotes,
-		'Литература': literatureNotes,
-		'Медицина': medicineNotes,
-		'Наука': scienceNotes,
-		'Экономика': economyNotes,
-	};
-
+	const [points, setPoints] = useState<Point[]>(pointsBlock);
   const [hoveredPoint, setHoveredPoint] = useState<Point | null>(null);
-  const [circleAngle, setCircleAngle] = useState(0);
-	const pointIdFinder = points.find((point) => point.active)?.id
-	const activeNotes = notes[points.find((point) => point.active)?.name];
+  const [circleAngle, setCircleAngle] = useState<number>(0);
+	const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
-	const [isAnimating, setIsAnimating] = useState(false);
+	const pointIdFinder = points.find((point) => point.active)?.id
+	const activePoint = points.find((point) => point.active);
+	const activeNotes = activePoint ? notes[activePoint.name] : [];
 
   const handleMouseOver = (point: Point) => {
     if (!point.active) {
@@ -130,26 +113,22 @@ const App: React.FC = () => {
         handleClick={handleClick}
 				isAnimating={isAnimating}
       />
-			<div className={`circleDates ${isAnimating ? 'hidden' : ''}`}>
-				<span className='firstDate'>{activeNotes[0].year}</span>
-				<span className='secondDate'>{activeNotes[activeNotes.length - 1].year}</span>
-			</div>
-			<div className={`switcherContainer ${isAnimating ? 'hidden' : ''}`}>
-				<span className='switcherPageNumbers'>{pointIdFinder}/{points.length}</span>
-				<span className='switcherButtons'>
-					<button className="switcherPrev" onClick={setPrevPage} disabled={pointIdFinder== 1}>←</button>
-					<button className="switcherNext" onClick={setNextPage} disabled={pointIdFinder == 6}>→</button>
-				</span>	
-			</div>
-			<div className="dots-container">
-				{points.map((point, index) => (
-					<div
-						key={index}
-						className={`dot ${point.active ? 'active' : ''}`}
-					/>
-				))}
-			</div>
-			<NotesPanel points={points} notes={notes} isAnimating={isAnimating}/>
+			<CircleDates 
+				isAnimating={isAnimating} 
+				activeNotes={activeNotes} 
+			/>
+			<SwitcherContainer 
+				points={points} 
+				isAnimating={isAnimating} 
+				pointIdFinder={pointIdFinder} 
+				setPrevPage={setPrevPage} 
+				setNextPage={setNextPage}
+			/>
+			<NotesPanel 
+				points={points} 
+				notes={notes} 
+				isAnimating={isAnimating}
+			/>
     </div>
   );
 };

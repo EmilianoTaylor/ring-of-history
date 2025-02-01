@@ -1,4 +1,6 @@
-export const scienceNotes = [
+import { SliderNote } from "../interfaces/rootInterfaces"
+
+export const scienceNotes: SliderNote[] = [
 	{
 	year: 2015,
 	text: '13 сентября - частное солнечное затмение13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды'
@@ -25,7 +27,7 @@ export const scienceNotes = [
 	},
 ]
 
-export const cinemaNotes = [
+export const cinemaNotes: SliderNote[] = [
 	{
 		year: 1987,
 		text: '"Хищник"/Predator, США (реж. Джон Мактирнан)'
@@ -48,7 +50,7 @@ export const cinemaNotes = [
 	},
 ]
 
-export const literatureNotes = [
+export const literatureNotes: SliderNote[] = [
 	{
 		year: 1992,
 		text: 'Нобелевская пемия по литературе - Деррек Уолкотт, "За блестящий образец карибского эпоса в 64 разделах"'
@@ -70,7 +72,7 @@ export const literatureNotes = [
 		 text: 'Нобелевская преми по литературе - Сен-Жон Перс' }
 ]
 
-export const sportNotes = [
+export const sportNotes: SliderNote[] = [
   {
     year: 2012,
     text: 'Летние Олимпийские игры в Лондоне'
@@ -97,7 +99,7 @@ export const sportNotes = [
   },
 ]
 
-export const economyNotes = [
+export const economyNotes: SliderNote[] = [
   {
     year: 2008,
     text: 'Мировой финансовый кризис'
@@ -124,7 +126,7 @@ export const economyNotes = [
   },
 ]
 
-export const medicineNotes = [
+export const medicineNotes: SliderNote[] = [
   {
     year: 2013,
     text: 'Разработка первой вакцины против Эболы'

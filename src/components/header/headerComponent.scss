@@ -1,4 +1,4 @@
-@media (min-width: 760px) {
+@media (min-width: 768px) {
 	.rootHeader {
 		position: absolute;
 		left: 0;
@@ -10,6 +10,24 @@
 		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		font-weight: 700;
 		font-size: 4vh;
+	}
+	
+	.rootHeaderText {
+		display: block;
+		color: #42567A;
+		margin-left: 7%;
+	}
+}
+
+@media (max-width: 768px) {
+	.rootHeader {
+		position: absolute;
+		left: 0;
+		top: 9vh;
+		height: 10vh;
+		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-weight: 700;
+		font-size: 3vh;
 	}
 	
 	.rootHeaderText {

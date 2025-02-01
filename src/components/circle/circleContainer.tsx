@@ -1,7 +1,8 @@
-// @ts-nocheck
+import { CSSProperties } from 'react';
+import { CircleContainerProps, Point } from '../interfaces/rootInterfaces';
 import './circleContainer.scss'
 
-const CircleContainer = ({ points, circleAngle, hoveredPoint, handleMouseOver, handleMouseOut, handleClick, isAnimating }) => {
+const CircleContainer = ({ points, circleAngle, hoveredPoint, handleMouseOver, handleMouseOut, handleClick, isAnimating }: CircleContainerProps) => {
   return (
     <div className="circleContainer">
       <div
@@ -10,11 +11,11 @@ const CircleContainer = ({ points, circleAngle, hoveredPoint, handleMouseOver, h
           transform: `rotate(${circleAngle}deg)`,
         }}
       >
-        {points.map(point => (
+        {points.map((point: Point) => (
           <div
             key={point.id}
             className={`point ${point.active || (hoveredPoint && hoveredPoint.id === point.id) ? 'active' : ''}`}
-            style={{ '--angle': `${point.angle}deg` }}
+            style={{ '--angle': `${point.angle}deg` } as CSSProperties}
             onMouseOver={() => handleMouseOver(point)}
             onMouseOut={handleMouseOut}
             onClick={() => handleClick(point)}
@@ -24,7 +25,7 @@ const CircleContainer = ({ points, circleAngle, hoveredPoint, handleMouseOver, h
         ))}
       </div>
       <div className={`circleLabel ${isAnimating ? 'hidden' : ''}`}>
-        {points.find((point) => point.active)?.name}
+        {points.find((point: Point) => point.active)?.name}
       </div>
     </div>
   );

@@ -1,117 +1,59 @@
 @media (min-width: 768px) {
+	@mixin rootBlockSel ($top, $left, $width, $height, $translate) {
+		top: $top;
+		left: $left;
+		width: $width;
+		height: $height;
+		transform: $translate(-50%);
+	}
+
 	.rootBlock {
 		position: absolute;
 		left: 13%;
 		width: 79%;
 		height: 100vh;
 		border: 1px solid lightgray;
+		
+		.hidden {
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
+		.notes-panel, .circleDates, .switcherContainer {
+			transition: opacity 0.5s;
+		}
 	}
-	
+
 	.rootBlock::before,
 	.rootBlock::after {
 		content: "";
 		position: absolute;
 		background-color: lightgray;
 	}
-	
+
 	.rootBlock::before {
-		top: 50%;
-		left: 0;
-		width: 100%;
-		height: 1px;
-		transform: translateY(-50%);
+		@include rootBlockSel(50%, 0, 100%, 1px, translateY);
 	}
 	
 	.rootBlock::after {
-		top: 0;
-		left: 50%;
-		width: 1px;
-		height: 100%;
-		transform: translateX(-50%);
+		@include rootBlockSel(0, 50%, 1px, 100%, translateX);
 	}
-	
-	.switcherContainer {
+}
+
+@media (max-width: 768px) {
+	.rootBlock {
 		position: absolute;
-		bottom: 37vh;
-		left: 3%;
-		width: 10%;
-	}
-	
-	.switcherPageNumbers {
-		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		font-size: 2.2vh;
-		color: #42567A;
-		font-weight: 400;
-		margin-left: 25%;
-	}
-	
-	.switcherButtons {
-		display: block;
-		border: none;
-		background-color: transparent;
-		cursor: pointer;
-		font-size: 24px;
-	}
-	
-	.switcherPrev, .switcherNext {
-		border: 0.5px solid gray;
-		background-color: transparent;
-		cursor: pointer;
-		padding: 8px;
-		border-radius: 50%;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
-	
-	.switcherPrev {
-		margin-right: 10%;
-	}
-	
-	.switcherPrev:hover, .switcherNext:hover {
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	}
-	
-	.switcherPrev:disabled, .switcherNext:disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
-	
-	.circleDates {
-		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		text-align: center;
-		display: flex;
-		justify-content: space-between;
-		width: 60%;
-	}
-	
-	.firstDate, .secondDate {
-		flex: 1;
-		font-size: 14vh;
-		font-weight: 700;
-	}
-	
-	.firstDate {
-		color: #3877EE;
-	}
-	
-	.secondDate {
-		color: #EF5DA8;
-	}	
+		width: 100%;
+		height: 100vh;
 
-	.hidden {
-		opacity: 0;
-		transition: opacity 0.5s;
-	}
-
-	.notes-panel, .circleDates, .switcherContainer {
-		transition: opacity 0.5s;
-	}
-
-	.dots-container {
-		display: none;
+		.hidden {
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+	
+		.notes-panel, .circleDates, .switcherContainer {
+			transition: opacity 0.5s;
+		}
 	}
 }
 

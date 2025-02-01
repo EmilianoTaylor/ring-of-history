@@ -57,3 +57,17 @@
 		color: #42567A;
 	}
 }
+
+@media (max-width: 768px) {
+	.circleContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+
+		
+	.circle, .point, .circleLabel {
+		display: none;
+	}
+}
