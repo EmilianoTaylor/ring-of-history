@@ -1,0 +1,133 @@
+@media (max-width: 768px) {
+	.rootBlock {
+		position: absolute;
+		width: 100%;
+		height: 100vh;
+	}
+	
+	.circleContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+	
+	.circle, .point, .circleLabel {
+		display: none;
+	}
+	
+	.rootHeader {
+		position: absolute;
+		left: 0;
+		top: 9vh;
+		height: 10vh;
+		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-weight: 700;
+		font-size: 3vh;
+	}
+	
+	.rootHeaderText {
+		display: block;
+		color: #42567A;
+		margin-left: 7%;
+	}
+
+	.circleDates {
+		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		position: absolute;
+		top: 25%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+	.firstDate, .secondDate {
+		flex: 1;
+		font-size: 20vw;
+		font-weight: 500;
+	}
+	
+	.firstDate {
+		color: #3877EE;
+	}
+	
+	.secondDate {
+		color: #EF5DA8;
+	}
+	
+	.switcherContainer {
+		position: absolute;
+		bottom: 6vh;
+		left: 8%;
+		width: 20%;
+	}
+	
+	.switcherPageNumbers {
+		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-size: 2.2vh;
+		color: #42567A;
+		font-weight: 400;
+		margin-left: 25%;
+	}
+	
+	.switcherButtons {
+		display: block;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+		font-size: 24px;
+	}
+	
+	.switcherPrev, .switcherNext {
+		border: 0.5px solid gray;
+		background-color: transparent;
+		cursor: pointer;
+		padding: 8px;
+		border-radius: 50%;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+	
+	.switcherPrev {
+		margin-right: 10%;
+	} 
+	
+	.switcherPrev:disabled, .switcherNext:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+	
+	.dots-container {
+		position: absolute;
+		display: flex;
+		justify-content: space-between;
+		width: 35%;
+		left: 30vw;
+		bottom: 5vh;
+		padding: 20px;
+	}
+	
+	.dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background-color: #ccc;
+		margin: 5px;
+	}
+	
+	.dot.active {
+		background-color: #333;
+	}
+
+	.hidden {
+		opacity: 0;
+		transition: opacity 0.5s;
+	}
+
+	.notes-panel, .circleDates, .switcherContainer {
+		transition: opacity 0.5s;
+	}
+}

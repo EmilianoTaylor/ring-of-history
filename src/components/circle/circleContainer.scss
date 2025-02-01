@@ -1,0 +1,59 @@
+@media (min-width: 768px) {
+	.circleContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+	
+	.circle {
+		width: 330px;
+		height: 330px;
+		position: relative;
+		border: 1px solid lightgray;
+		border-radius: 50%;
+		transition: transform 0.5s ease;
+		z-index: 2;
+	}
+	
+	.point {
+		position: absolute;
+		width: 5px;
+		height: 5px;
+		font-size: 0px;
+		background-color: black;
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(var(--angle)) translate(165px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: all 0.1s ease;
+	}
+	
+	.point.active {
+		width: 36px;
+		height: 36px;
+		background-color: white;
+		border: 1px solid black;
+	}
+	
+	.point-text {
+		color: black;
+		display: flex;
+		cursor: pointer;
+	}
+	
+	.circleLabel {
+		position: absolute;
+		top: 32%;
+		left: 68%;
+		transform: translate(-50%, -50%);
+		font-size: 24px;
+		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-weight: 700;
+		font-size: 2vh;
+		color: #42567A;
+	}
+}

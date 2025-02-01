@@ -3,10 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper/types';
 import 'swiper/css';
-import './App.css'
-import './components/sliderPanel/sliderPanel.scss'
-import { Point } from './components/interfsces/rootInterfaces';
-import { cinemaNotes, economyNotes, literatureNotes, medicineNotes, scienceNotes, sportNotes } from './components/sliderPanel/sliderNotes';
+import './components/mobileCSS.scss'
+import './App.scss'
+import { Point } from './components/interfaces/rootInterfaces';
+import { cinemaNotes, economyNotes, literatureNotes, medicineNotes, scienceNotes, sportNotes } from './components/notesPanel/sliderNotes';
+import NotesPanel from './components/notesPanel/sliderPanel';
+import Header from './components/header/headerComponent';
+import CircleContainer from './components/circle/circleContainer';
 
 const App: React.FC = () => {
   const [points, setPoints] = useState<Point[]>([
@@ -26,39 +29,6 @@ const App: React.FC = () => {
 		'Наука': scienceNotes,
 		'Экономика': economyNotes,
 	};
-
-	const NotesPanel = () => {
-		const activePoint = points.find((point) => point.active);
-		const activeNotes = notes[activePoint.name];
-
-		const prevRef = useRef(null);
-		const nextRef = useRef(null);
-		const swiperRef = useRef<SwiperCore>();  
-		
-	
-		return (
-			<div className={`notes-panel ${isAnimating ? 'hidden' : ''}`}>
-				<Swiper
-					onBeforeInit={(swiper) => {
-						swiperRef.current = swiper;
-					}}
-					slidesPerView={(window.innerWidth < 768) ? 2 : 4}
-				>
-					{activeNotes.map((note, index) => (
-						<SwiperSlide key={index}>
-							<div className="note">
-								<span className="year">{note.year}</span>
-								<p className="text">{note.text}</p>
-							</div>
-						</SwiperSlide>
-					))}
-				</Swiper>
-				<div className="swiper-button-prev" onClick={() => swiperRef.current?.slidePrev()}>←</div>
-				<div className="swiper-button-next" onClick={() => swiperRef.current?.slideNext()}>→</div>
-			</div>
-		);
-	};
-
 
   const [hoveredPoint, setHoveredPoint] = useState<Point | null>(null);
   const [circleAngle, setCircleAngle] = useState(0);
@@ -150,33 +120,16 @@ const App: React.FC = () => {
 
   return (
     <div className="rootBlock">
-			<header className='rootHeader'>
-				<span className='rootHeaderText'>Исторические даты</span>
-			</header>
-      <div className="circleContainer">
-        <div
-          className="circle"
-          style={{
-            transform: `rotate(${circleAngle}deg)`,
-          }}
-        >
-					{points.map(point => (
-						<div
-							key={point.id}
-							className={`point ${point.active || (hoveredPoint && hoveredPoint.id === point.id) ? 'active' : ''}`}
-							style={{ '--angle': `${point.angle}deg` }}
-							onMouseOver={() => handleMouseOver(point)}
-							onMouseOut={handleMouseOut}
-							onClick={() => handleClick(point)}
-						>
-							<span className="point-text" style={{ fontSize: point.active || (hoveredPoint && hoveredPoint.id === point.id) ? "18px" : 0 }}>{point.id}</span>
-						</div>
-        	))}
-        </div>
-        <div className={`circleLabel ${isAnimating ? 'hidden' : ''}`}>
-          {points.find((point) => point.active)?.name}
-        </div>
-      </div>
+			<Header />
+			<CircleContainer
+        points={points}
+        circleAngle={circleAngle}
+        hoveredPoint={hoveredPoint}
+        handleMouseOver={handleMouseOver}
+        handleMouseOut={handleMouseOut}
+        handleClick={handleClick}
+				isAnimating={isAnimating}
+      />
 			<div className={`circleDates ${isAnimating ? 'hidden' : ''}`}>
 				<span className='firstDate'>{activeNotes[0].year}</span>
 				<span className='secondDate'>{activeNotes[activeNotes.length - 1].year}</span>
@@ -188,7 +141,15 @@ const App: React.FC = () => {
 					<button className="switcherNext" onClick={setNextPage} disabled={pointIdFinder == 6}>→</button>
 				</span>	
 			</div>
-			<NotesPanel />
+			<div className="dots-container">
+				{points.map((point, index) => (
+					<div
+						key={index}
+						className={`dot ${point.active ? 'active' : ''}`}
+					/>
+				))}
+			</div>
+			<NotesPanel points={points} notes={notes} isAnimating={isAnimating}/>
     </div>
   );
 };
