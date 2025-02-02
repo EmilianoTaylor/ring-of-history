@@ -1,38 +1,36 @@
+@mixin rootHeader ($vh) {
+	position: absolute;
+	left: 0;
+	top: 9vh;
+	height: 10vh;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-weight: 700;
+	font-size: $vh;
+}
+
 @media (min-width: 768px) {
 	.rootHeader {
-		position: absolute;
-		left: 0;
-		top: 9vh;
-		height: 10vh;
+		@include rootHeader(4vh);
 		border-left: 4px solid;
 		border-image-source: linear-gradient(to bottom, #3877EE, #EF5DA8);
 		border-image-slice: 1;
-		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		font-weight: 700;
-		font-size: 4vh;
-	}
-	
-	.rootHeaderText {
-		display: block;
-		color: #42567A;
-		margin-left: 7%;
+
+		.rootHeaderText {
+			display: block;
+			color: #42567A;
+			margin-left: 7%;
+		}
 	}
 }
 
 @media (max-width: 768px) {
 	.rootHeader {
-		position: absolute;
-		left: 0;
-		top: 9vh;
-		height: 10vh;
-		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		font-weight: 700;
-		font-size: 3vh;
-	}
-	
-	.rootHeaderText {
-		display: block;
-		color: #42567A;
-		margin-left: 7%;
+		@include rootHeader(3vh);
+
+		.rootHeaderText {
+			display: block;
+			color: #42567A;
+			margin-left: 7%;
+		}
 	}
 }

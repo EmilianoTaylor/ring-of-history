@@ -1,49 +1,58 @@
+@mixin switcherPageNumbers () {
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 2.2vh;
+	color: #42567A;
+	font-weight: 400;
+	margin-left: 25%;
+}
+@mixin switcherButtons () {
+	display: block;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	font-size: 24px;
+}
+@mixin switcherPrevNext () {
+	border: 0.5px solid gray;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 8px;
+	border-radius: 50%;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 @media (min-width: 768px) {
 	.switcherContainer {
 		position: absolute;
 		bottom: 37vh;
 		left: 3%;
 		width: 10%;
-	}
-	
-	.switcherPageNumbers {
-		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		font-size: 2.2vh;
-		color: #42567A;
-		font-weight: 400;
-		margin-left: 25%;
-	}
-	
-	.switcherButtons {
-		display: block;
-		border: none;
-		background-color: transparent;
-		cursor: pointer;
-		font-size: 24px;
-	}
-	
-	.switcherPrev, .switcherNext {
-		border: 0.5px solid gray;
-		background-color: transparent;
-		cursor: pointer;
-		padding: 8px;
-		border-radius: 50%;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
-	
-	.switcherPrev {
-		margin-right: 10%;
-	}
-	
-	.switcherPrev:hover, .switcherNext:hover {
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	}
-	
-	.switcherPrev:disabled, .switcherNext:disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
 
+		.switcherPageNumbers {
+			@include switcherPageNumbers;
+		}
+		
+		.switcherButtons {
+			@include switcherButtons;
+		}
+		
+		.switcherPrev, .switcherNext {
+			@include switcherPrevNext;
+		}
+		
+		.switcherPrev {
+			margin-right: 10%;
+		}
+		
+		.switcherPrev:hover, .switcherNext:hover {
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		}
+		
+		.switcherPrev:disabled, .switcherNext:disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+	}
 	.dots-container {
 		display: none;
 	}
@@ -55,42 +64,28 @@
 		bottom: 6vh;
 		left: 8%;
 		width: 20%;
+
+		.switcherPageNumbers {
+			@include switcherPageNumbers;
+		}
+		
+		.switcherButtons {
+			@include switcherButtons;
+		}
+		
+		.switcherPrev, .switcherNext {
+			@include switcherPrevNext;
+		}
+		
+		.switcherPrev {
+			margin-right: 10%;
+		} 
+		
+		.switcherPrev:disabled, .switcherNext:disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
 	}
-	
-	.switcherPageNumbers {
-		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		font-size: 2.2vh;
-		color: #42567A;
-		font-weight: 400;
-		margin-left: 25%;
-	}
-	
-	.switcherButtons {
-		display: block;
-		border: none;
-		background-color: transparent;
-		cursor: pointer;
-		font-size: 24px;
-	}
-	
-	.switcherPrev, .switcherNext {
-		border: 0.5px solid gray;
-		background-color: transparent;
-		cursor: pointer;
-		padding: 8px;
-		border-radius: 50%;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
-	
-	.switcherPrev {
-		margin-right: 10%;
-	} 
-	
-	.switcherPrev:disabled, .switcherNext:disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
-	
 	.dots-container {
 		position: absolute;
 		display: flex;
