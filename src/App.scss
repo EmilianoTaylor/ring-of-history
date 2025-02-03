@@ -8,11 +8,11 @@
 	}
 
 	.rootBlock {
-		position: absolute;
-		left: 13%;
+		position: relative;
 		width: 79%;
 		height: 100vh;
 		border: 1px solid lightgray;
+		margin: 0 auto;
 		
 		.hidden {
 			opacity: 0;
